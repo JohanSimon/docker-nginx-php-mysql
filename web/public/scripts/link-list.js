@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var sortFieldValue;
   var layoutFieldValue;
   var searchFieldValue;
+  var cardPosition = [];
 
   //
   // Grid helper functions
@@ -96,9 +97,25 @@ document.addEventListener('DOMContentLoaded', function () {
         docElem.classList.remove('dragging');
       }
     })
-    .on('move', updateIndices)
+    .on('move', function() {
+      updateIndices;
+      saveLayout(grid);
+    })
     .on('sort', updateIndices);
 
+  }
+
+  function serializeLayout(grid) {
+    var itemIds = grid.getItems().map(function (item) {
+      return item.getElement().getAttribute('data-id');
+    });
+    return JSON.stringify(itemIds);
+  }
+
+  function saveLayout(grid) {
+    var layout = serializeLayout(grid);
+    //window.localStorage.setItem('layout', layout);
+    console.log(layout);
   }
 
   function filter() {
@@ -285,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function () {
       item.getElement().setAttribute('data-id', i + 1);
       item.getElement().querySelector('.card-id').innerHTML = i + 1;
     });
-
   }
 
   function elementMatches(element, selector) {
@@ -311,15 +327,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  //
-  // Fire it up!
-  //
+function loadIcons() {
+  var iconBase = [];
+  $.getJSON('scripts/MaterialIcons-Regular.ijmap', function (data) {
+    $.each (data, function(key,val) {
+      $.each(val, function(key2,val2) {
+          $.each(val2, function(key3,val3) {
+            iconBase.push (val3);
+          });  
+      });
+    });  
+  });
+  return iconBase;
+}
+
+
+function generateIconMap(id, title, color, width, height) {
+
+  var icons = loadIcons();
+  var itemElem = document.createElement('div');
+  var classNames = 'item h' + height + ' w' + width + ' ' + color;
+  var itemTemplate = '' +
+      '<div class="' + classNames + '" data-id="' + id + '" data-color="' + color + '" data-title="' + title + '">' +
+        '<div class="item-content">' +
+          '<div class="card">' +
+            '<div class="card-icon"><i class="material-icons>' + id + '</i></div>' +
+            '<div class="card-title">' + title + '</div>' +
+            '<div class="card-remove"><i class="material-icons">&#xE5CD;</i></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+  itemElem.innerHTML = itemTemplate;
+  return itemElem.firstChild;
+
+}
 
   
-  $("#debug").click(function() {
-    alert("klikkerdeklik");
-  });
-
   initDemo();
 
 });
