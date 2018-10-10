@@ -1,3 +1,5 @@
+/// <reference path="../node_modules/@types/jquery/index.d.ts" />
+
 document.addEventListener('DOMContentLoaded', function () {
 
   //
@@ -312,6 +314,11 @@ document.addEventListener('DOMContentLoaded', function () {
   //
   // Fire it up!
   //
+
+  
+  $("#debug").click(function() {
+    alert("klikkerdeklik");
+  });
 
   initDemo();
 
