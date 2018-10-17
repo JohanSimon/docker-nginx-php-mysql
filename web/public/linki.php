@@ -97,7 +97,8 @@
         
         foreach ($linkiData->cards as $card) {
 ?>
-        <div class="item h20 w20 <?=$card->data_color?> muuri-item muuri-item-shown" data-id="<?=$card->data_id?>" data-color="<?=$card->data_color?>" data-title="<?=$card->data_title?>" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+        <div class="item h20 w20 <?=$card->data_color?> muuri-item muuri-item-shown" data-id="<?=$card->data_id?>" data-color="<?=$card->data_color?>" data-title="<?=$card->data_title?>" data-icon="<?=$card->icon?>" data-link="<?=$card->link_url?>" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <a href="<?=$card->link_url?>">
                 <div class="item-content" style="opacity: 1; transform: scale(1);">
                     <div class="card">
                         <div class="card-id"><?=$card->data_id?></div>
@@ -110,6 +111,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
         </div>  
 <?          
         }
@@ -119,8 +121,8 @@
 
    
      <div class="grid-footer">
-        <button class="add-more-items btn btn-primary"><i class="material-icons">&#xE145;</i>Add more items</button>
-        
+        <button class="add-more-items btn btn-primary"><i class="material-icons">&#xE145;</i>Add more items</button>       
+        <button class="save-items btn btn-primary"><i class="material-icons">save_alt</i>Save</button>
     </div>
 
     </section>

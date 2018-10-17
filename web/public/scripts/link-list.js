@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var sortField = demo.querySelector('.sort-field');
   var layoutField = demo.querySelector('.layout-field');
   var addItemsElement = demo.querySelector('.add-more-items');
+  var saveItemsElements = demo.querySelector('.save-items');
   var characters = 'abcdefghijklmnopqrstuvwxyz';
   var filterOptions = ['red', 'blue', 'green'];
   var dragOrder = [];
@@ -23,8 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var sortFieldValue;
   var layoutFieldValue;
   var searchFieldValue;
-  var cardPosition = [];
-
   //
   // Grid helper functions
   //
@@ -67,6 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
+    saveItemsElements.addEventListener('click', function () {
+      saveLayout(grid);
+    });
+    
   }
 
   function initGrid() {
@@ -97,34 +100,29 @@ document.addEventListener('DOMContentLoaded', function () {
         docElem.classList.remove('dragging');
       }
     })
-    .on('move', function() {
-      updateIndices;
-      saveLayout(grid);
-    })
+    .on('move', updateIndices)
     .on('sort', updateIndices);
 
   }
 
   function serializeLayout(grid) {
     var itemIds = grid.getItems().map(function (item) {
-      return item.getElement().getAttribute('data-id');
+      var linkiElem = [];
+      linkiElem[0] = item.getElement().getAttribute('data-id');
+      linkiElem[1] = item.getElement().getAttribute('data-color');
+      linkiElem[2] = item.getElement().getAttribute('data-title');
+      linkiElem[3] = item.getElement().getAttribute('data-icon');
+      linkiElem[4] = item.getElement().getAttribute('data-link');
+      return linkiElem;
     });
     return JSON.stringify(itemIds);
   }
 
-  function serializeLayout2(grid) {
-    var activeItems = grid.getItems().map(function (item) {
-      return item.isActive();
-    });
-    return JSON.stringify(activeItems);
-  }
-
-
   function saveLayout(grid) {
+
     var layout = serializeLayout(grid);
-    var layout2 = serializeLayout2(grid);
     //window.localStorage.setItem('layout', layout);
-    console.log(layout2);
+    console.log(layout);
   }
 
   function filter() {
@@ -191,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Finally filter the items.
     filter();
+    saveLayout(grid);
 
   }
 
@@ -236,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ret.push(generateElement(
         ++uuid,
         "New Item",
+        "#",
         getRandomItem(filterOptions),
         "help_outline",
         20,
@@ -247,12 +247,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  function generateElement(id, title, color, icon, width, height) {
+  function generateElement(id, title, link, color, icon, width, height) {
 
     var itemElem = document.createElement('div');
     var classNames = 'item h' + height + ' w' + width + ' ' + color;
     var itemTemplate = '' +
-        '<div class="' + classNames + '" data-id="' + id + '" data-color="' + color + '" data-title="' + title + '">' +
+        '<div class="' + classNames + '" data-id="' + id + '" data-color="' + color + '" data-title="' + title + '" data-icon="' + icon + '" data-link="' + link + '">' +
           '<div class="item-content">' +
             '<div class="card">' +
               '<div class="card-id">' + id + '</div>' +
@@ -374,7 +374,7 @@ function generateIconMap(id, title, color, width, height) {
 
 }
 
-  
+
   initDemo();
 
 });
