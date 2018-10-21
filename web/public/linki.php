@@ -171,7 +171,7 @@
         <div class="grid muuri">
 <?
         // create cards from json file
-        $url = 'linki-data.json';
+        $url = 'results.json';
         $data = file_get_contents($url);
         $linkiData = json_decode($data); 
         
@@ -205,13 +205,13 @@
    
      <div class="grid-footer">
         <button class="add-more-items btn btn-primary"><i class="material-icons">&#xE145;</i>Add more items</button>       
-        <button id="save-button" class="save-items btn btn-primary" data-badge=""><i class="material-icons">save_alt</i>Save</button>
+        <button id="save-button" class="save-items btn btn-primary popup" data-badge=""><i class="material-icons">save_alt</i>Save<span class="popuptext" id="myPopup">Linki saved!</span></button>
   </div>
 
     </section>
     
     <footer>
-      Made by Johan Powered by <a href="https://www.danton.nl" target="_blank">Danton</a>
+      Making link list fun! <i class="material-icons">favorite</i> Powered by <a href="https://www.danton.nl" target="_blank">Danton</a>
     </footer>
 
     <script src="scripts/vendor/web-animations-2.3.1.min.js"></script>

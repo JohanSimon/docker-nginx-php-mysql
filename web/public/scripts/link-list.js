@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     changeIconField.addEventListener('change',updatePlaceholderIcon);
     cancelEdit.addEventListener('click',closeEditWindow);
     saveEdit.addEventListener('click',saveCard);
+
   }
 
   function initGrid() {
@@ -128,22 +129,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function serializeLayout(grid) {
     var itemIds = grid.getItems().map(function (item) {
-      var linkiElem = [];
-      linkiElem[0] = item.getElement().getAttribute('data-id');
-      linkiElem[1] = item.getElement().getAttribute('data-color');
-      linkiElem[2] = item.getElement().getAttribute('data-title');
-      linkiElem[3] = item.getElement().getAttribute('data-icon');
-      linkiElem[4] = item.getElement().getAttribute('data-link');
+      var linkiElem = {};
+      linkiElem['data_id'] = item.getElement().getAttribute('data-id');
+      linkiElem['data_color'] = item.getElement().getAttribute('data-color');
+      linkiElem['data_title'] = item.getElement().getAttribute('data-title');
+      linkiElem['icon'] = item.getElement().getAttribute('data-icon');
+      linkiElem['link_url'] = item.getElement().getAttribute('data-link');
       return linkiElem;
     });
     return JSON.stringify(itemIds);
   }
 
   function saveLayout(grid) {
-
     var layout = serializeLayout(grid);
-    //window.localStorage.setItem('layout', layout);
-    console.log(layout);
+    // send to PHP helper function
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "linki-save.php", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");    
+    xhttp.onreadystatechange = function () {
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+          // console.log(xhttp.responseText);
+          var popup = document.getElementById("myPopup");
+          popup.classList.add("show");
+          setTimeout(function(){
+            popup.classList.remove("show");
+           }, 2500);
+      }
+    }
+    xhttp.send(layout);
   }
 
   function filter() {
@@ -384,7 +397,6 @@ function loadIcons() {
      }
   );
 }
-
 
 function loadJSON(path, success, error)
 {
