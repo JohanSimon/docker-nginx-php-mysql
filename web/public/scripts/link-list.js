@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var layoutField = demo.querySelector('.layout-field');
   var addItemsElement = demo.querySelector('.add-more-items');
   var saveItemsElements = demo.querySelector('.save-items');
-  var characters = 'abcdefghijklmnopqrstuvwxyz';
   var filterOptions = ['red', 'blue', 'green'];
   var dragOrder = [];
   var uuid = 0;
@@ -24,6 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var sortFieldValue;
   var layoutFieldValue;
   var searchFieldValue;
+  
+  // Initialize edit window
+  var changeColorField = document.querySelector('#sel-color');
+  var changeIconField = document.querySelector('#sel-icon');
+  var changeTitleField = document.querySelector('#sel-title');
+  var changeURLField = document.querySelector('#sel-url');
+  var cancelEdit = document.querySelector('#cancelBtn');
+  var saveEdit = document.querySelector('#saveBtn');
+
   //
   // Grid helper functions
   //
@@ -31,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initDemo() {
 
     initGrid();
+    loadIcons();
 
     // Reset field values.
     searchField.value = '';
@@ -63,13 +72,24 @@ document.addEventListener('DOMContentLoaded', function () {
     gridElement.addEventListener('click', function (e) {
       if (elementMatches(e.target, '.card-remove, .card-remove i')) {
         removeItem(e);
+      } else if (elementMatches(e.target, '.card-edit, .card-edit i')) {
+        editItem(e);
       }
     });
 
+    // Save and change items bindings
     saveItemsElements.addEventListener('click', function () {
       saveLayout(grid);
+      updateSaveCounter(true);
     });
     
+    // Edit window bindings
+    changeColorField.addEventListener('change',updatePlaceholderColor);
+    changeTitleField.addEventListener('keyup',updatePlaceholderTitle);
+    changeURLField.addEventListener('keyup',updatePlaceholderURL);
+    changeIconField.addEventListener('change',updatePlaceholderIcon);
+    cancelEdit.addEventListener('click',closeEditWindow);
+    saveEdit.addEventListener('click',saveCard);
   }
 
   function initGrid() {
@@ -86,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
       dragStartPredicate: function (item, event) {
         var isDraggable = sortFieldValue === 'order';
         var isRemoveAction = elementMatches(event.target, '.card-remove, .card-remove i');
-        return isDraggable && !isRemoveAction ? Muuri.ItemDrag.defaultStartPredicate(item, event) : false;
+        var isEditAction = elementMatches(event.target, '.card-edit, .card-edit i');
+        return isDraggable && !isRemoveAction && !isEditAction ? Muuri.ItemDrag.defaultStartPredicate(item, event) : false;
       },
       dragReleaseDuration: 400,
       dragReleseEasing: 'ease'
@@ -189,8 +210,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Finally filter the items.
     filter();
-    saveLayout(grid);
-
   }
 
   function removeItem(e) {
@@ -210,6 +229,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  function editItem (e) {
+      var elem = elementClosest(e.target, '.item');
+      inputItem (elem.getAttribute('data-id'),elem.getAttribute('data-icon'), elem.getAttribute('data-title'), elem.getAttribute('data-link'), elem.getAttribute('data-color'))
+  }
+
+  function inputItem (elementDataID, elementIcon, elementTitle, elementURL, elementColor) {
+     // first fill in the placeholder
+
+     document.getElementById('ph-dataid').innerHTML=elementDataID;
+     document.getElementById('sel-dataid').value=elementDataID;
+     var element = document.getElementById('placeholder');
+     element.classList.remove("red","green","blue");
+     element.classList.add(elementColor);
+     document.getElementById("sel-color").value=elementColor;
+     document.getElementById('ph-title').innerHTML=elementTitle;    
+     document.getElementById('sel-title').value=elementTitle;
+     document.getElementById('ph-link').href=elementURL;
+     document.getElementById('sel-url').value=elementURL;
+     document.getElementById('ph-icon').innerHTML='<i class="material-icons">'+elementIcon+'</i>';
+     document.getElementById("sel-icon").value=elementIcon;
+         
+    // then show the edit window
+     var element = document.getElementById('myModal');
+     element.classList.remove("hideEdit");
+     element.classList.add("showEdit");
+  }
+
+
   function changeLayout() {
 
     layoutFieldValue = layoutField.value;
@@ -222,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.layout();
 
   }
+
 
   //
   // Generic helper functions
@@ -259,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
               '<div class="card-icon"><i class="material-icons">' + icon + '</i></div>'+              
               '<div class="card-title">' + title + '</div>' +
               '<div class="card-remove"><i class="material-icons">&#xE5CD;</i></div>' +
+              '<div class="card-edit"><i class="material-icons">edit</i></div>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -271,23 +320,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function getRandomItem(collection) {
 
     return collection[Math.floor(Math.random() * collection.length)];
-
-  }
-
-  // https://stackoverflow.com/a/7228322
-  function getRandomInt(min,max) {
-
-    return Math.floor(Math.random() * (max - min + 1) + min);
-
-  }
-
-  function generateRandomWord(length) {
-
-    var ret = '';
-    for (var i = 0; i < length; i++) {
-      ret += getRandomItem(characters);
-    }
-    return ret;
 
   }
 
@@ -313,6 +345,7 @@ document.addEventListener('DOMContentLoaded', function () {
       item.getElement().setAttribute('data-id', i + 1);
       item.getElement().querySelector('.card-id').innerHTML = i + 1;
     });
+    updateSaveCounter(false);
   }
 
   function elementMatches(element, selector) {
@@ -339,42 +372,116 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 function loadIcons() {
-  var iconBase = [];
-  $.getJSON('scripts/MaterialIcons-Regular.ijmap', function (data) {
-    $.each (data, function(key,val) {
-      $.each(val, function(key2,val2) {
-          $.each(val2, function(key3,val3) {
-            iconBase.push (val3);
-          });  
-      });
-    });  
-  });
-  return iconBase;
+  var selIcons = document.getElementById('sel-icon');
+  loadJSON('scripts/MaterialIcons-Regular.ijmap',
+      function(data) { 
+        var element = data.icons;
+        for (var key in element){
+            var option = document.createElement("option");
+            option.text = element[key].name.toLowerCase().replace(/ /g,"_");;
+            selIcons.add(option);
+        }
+     }
+  );
 }
 
 
-function generateIconMap(id, title, color, width, height) {
+function loadJSON(path, success, error)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (success)
+                    success(JSON.parse(xhr.responseText));
+            } else {
+                if (error)
+                    error(xhr);
+            }
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}
 
-  var icons = loadIcons();
-  var itemElem = document.createElement('div');
-  var classNames = 'item h' + height + ' w' + width + ' ' + color;
-  var itemTemplate = '' +
-      '<div class="' + classNames + '" data-id="' + id + '" data-color="' + color + '" data-title="' + title + '">' +
-        '<div class="item-content">' +
-          '<div class="card">' +
-            '<div class="card-icon"><i class="material-icons>' + id + '</i></div>' +
-            '<div class="card-title">' + title + '</div>' +
-            '<div class="card-remove"><i class="material-icons">&#xE5CD;</i></div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
+// Edit window helper functions
+function updatePlaceholderColor() {
+  var element = document.getElementById('placeholder');
+  var selColor = document.getElementById('sel-color');
+  var value = selColor.options[selColor.selectedIndex].value;
+  element.classList.remove("red","green","blue");
+  element.classList.add(value);
+}
 
-  itemElem.innerHTML = itemTemplate;
-  return itemElem.firstChild;
+function updatePlaceholderTitle() {
+  var value = document.getElementById('sel-title').value;
+  document.getElementById('ph-title').innerHTML=value;
+}
 
+function updatePlaceholderURL() {
+  var value = document.getElementById('sel-url').value;
+  if (!value.match(/^[a-zA-Z]+:\/\//))  {
+    value = 'https://' + value;
+  }
+  document.getElementById('ph-link').href=value;
+}
+
+function updatePlaceholderIcon() {
+  var selIcon = document.getElementById('sel-icon');
+  var value = selIcon.options[selIcon.selectedIndex].value;
+  document.getElementById('ph-icon').innerHTML='<i class="material-icons">'+value+'</i>';
+}
+
+function closeEditWindow() {
+  var element = document.getElementById('myModal');
+  element.classList.remove("showEdit");
+  element.classList.add("hideEdit");
+}
+
+function saveCard() {
+  // find edited data-id in the placeholder
+  var dataID = document.getElementById('sel-dataid').value;
+  // find the card by data-id
+  var nodelist = document.querySelectorAll('[data-id="' + dataID + '"]');
+  // data-id is unique so there is only one match
+  var targetElement = nodelist[0];
+
+  // match the selected card with the (updated) placeholder
+  var selColor = document.getElementById('sel-color');
+  var selIcon = document.getElementById('sel-icon');
+  var selUrl = document.getElementById('sel-url').value;
+  if (!selUrl.match(/^[a-zA-Z]+:\/\//))  {
+    selUrl = 'https://' + selUrl;
+  }
+  
+  // alter the data attributes
+  targetElement.setAttribute('data-icon', selIcon.options[selIcon.selectedIndex].value);
+  targetElement.setAttribute('data-title', document.getElementById('sel-title').value);
+  targetElement.setAttribute('data-link', selUrl);
+  targetElement.setAttribute('data-color', selColor.options[selColor.selectedIndex].value);
+  // match the HTML output of the card
+  targetElement.querySelector('.card-icon').innerHTML='<i class="material-icons">' + selIcon.options[selIcon.selectedIndex].value + '<i>';
+  targetElement.querySelector('.card-title').innerHTML=document.getElementById('sel-title').value;
+  // targetElement.querySelector('.card-url').innerHTML=selUrl;
+  targetElement.classList.remove("red","green","blue");
+  targetElement.classList.add(selColor.options[selColor.selectedIndex].value);
+  
+  updateSaveCounter(false);
+  closeEditWindow();
 }
 
 
+function updateSaveCounter(reset) {
+  var saveButton = document.getElementById('save-button');
+  var dataBadge = Number(saveButton.getAttribute('data-badge'));
+  var x = dataBadge+1;
+  if (!reset) {
+    saveButton.setAttribute('data-badge',x.toString());  
+  } else {
+    // reset the counter and hide it
+    saveButton.setAttribute('data-badge',"");
+  }
+}
   initDemo();
-
 });
