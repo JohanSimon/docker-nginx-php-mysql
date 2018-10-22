@@ -10,6 +10,7 @@ html {
   overflow-y: scroll;
   overflow-x: hidden;
   background: #fff;
+  height: 100%;
 }
 html.dragging body {
   -moz-user-select: none;
@@ -22,8 +23,9 @@ body {
   font-family: 'Fira Sans', Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.5;
-  margin: 0 20px;
+  margin: 0 0px;
   color: #6e6e6e;
+  height: 100%;
 }
 a {
   color: #3396FF;
@@ -203,7 +205,7 @@ section h4 {
   color: #3e3e3e;
   font-size: 26px;
   font-weight: 700;
-  margin: 40px 0;
+  padding-top: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-align: center;

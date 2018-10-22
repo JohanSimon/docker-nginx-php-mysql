@@ -39,10 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initDemo() {
 
     initGrid();
-    if (admin) {
-      loadIcons();
-      document.body.style.background = "#f3f3f3";
-    }
+    loadIcons();
 
     // Reset field values.
     searchField.value = '';
@@ -70,31 +67,29 @@ document.addEventListener('DOMContentLoaded', function () {
     sortField.addEventListener('change', sort);
     layoutField.addEventListener('change', changeLayout);
 
-    if (admin) {
-        // Add/remove items bindings.
-        addItemsElement.addEventListener('click', addItems);
-        gridElement.addEventListener('click', function (e) {
-          if (elementMatches(e.target, '.card-remove, .card-remove i')) {
-            removeItem(e);
-          } else if (elementMatches(e.target, '.card-edit, .card-edit i')) {
-            editItem(e);
-          }
-        });
-        
-        // Save and change items bindings
-        saveItemsElements.addEventListener('click', function () {
-          saveLayout(grid);
-          updateSaveCounter(true);
-        });
-        
-        // Edit window bindings
-        changeColorField.addEventListener('change',updatePlaceholderColor);
-        changeTitleField.addEventListener('keyup',updatePlaceholderTitle);
-        changeURLField.addEventListener('keyup',updatePlaceholderURL);
-        changeIconField.addEventListener('change',updatePlaceholderIcon);
-        cancelEdit.addEventListener('click',closeEditWindow);
-        saveEdit.addEventListener('click',saveCard);
-   }
+    // Add/remove items bindings.
+    addItemsElement.addEventListener('click', addItems);
+    gridElement.addEventListener('click', function (e) {
+      if (elementMatches(e.target, '.card-remove, .card-remove i')) {
+        removeItem(e);
+      } else if (elementMatches(e.target, '.card-edit, .card-edit i')) {
+        editItem(e);
+      }
+    });
+
+    // Save and change items bindings
+    saveItemsElements.addEventListener('click', function () {
+      saveLayout(grid);
+      updateSaveCounter(true);
+    });
+    
+    // Edit window bindings
+    changeColorField.addEventListener('change',updatePlaceholderColor);
+    changeTitleField.addEventListener('keyup',updatePlaceholderTitle);
+    changeURLField.addEventListener('keyup',updatePlaceholderURL);
+    changeIconField.addEventListener('change',updatePlaceholderIcon);
+    cancelEdit.addEventListener('click',closeEditWindow);
+    saveEdit.addEventListener('click',saveCard);
 
   }
 
@@ -105,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid = new Muuri(gridElement, {
       layoutDuration: 400,
       layoutEasing: 'ease',
-      dragEnabled: admin,
+      dragEnabled: true,
       dragSortInterval: 50,
       dragContainer: document.body,
       dragStartPredicate: function (item, event) {
@@ -487,6 +482,7 @@ function saveCard() {
   closeEditWindow();
 }
 
+
 function updateSaveCounter(reset) {
   var saveButton = document.getElementById('save-button');
   var dataBadge = Number(saveButton.getAttribute('data-badge'));
@@ -498,6 +494,5 @@ function updateSaveCounter(reset) {
     saveButton.setAttribute('data-badge',"");
   }
 }
-
   initDemo();
 });

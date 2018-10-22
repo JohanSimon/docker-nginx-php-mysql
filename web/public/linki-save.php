@@ -7,10 +7,14 @@
     $data = file_get_contents($url);
     $linkiData = json_decode($data); 
 
-    // remove slashes
-    //$input = stripslashes($_GET["grid"]);
+    if (!empty($linkiData->json_file)) {
+        $destiny = $linkiData->json_file;
+    } else {
+        $destiny = "noname.json";
+    }
+
     $input = stripslashes(file_get_contents("php://input"));
-    
+
     if (!empty($input)) {
         $cards = json_decode($input);
 
@@ -19,7 +23,7 @@
         
         $export = stripslashes(json_encode($linkiData));
 
-        $fp = fopen('results.json', 'w');
+        $fp = fopen($destiny, 'w');
         fwrite($fp, $export);
         fclose($fp);
     }
