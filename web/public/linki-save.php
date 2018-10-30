@@ -48,7 +48,7 @@
         }
         // create a new index.html file from template (which is cached)
         $template_data = "<!-- Cached version, created on: ".date("Y-m-d h:i")." -->\n";
-        $file_template = fopen('data/offline-linki-template.html','r');
+        $file_template = fopen('linkidata/offline-linki-template.html','r');
 
         while (!feof($file_template)) {
             $line = fgets($file_template);
@@ -68,7 +68,7 @@
 
         // change version serviceworker to refresh cache (with index.html in it)
         $version = 'const version = "' . date("Y-m-d_h:i:s_") . '"' . "\n";
-        $serviceWorkerData = file_get_contents('data/serviceworker-template.js');
+        $serviceWorkerData = file_get_contents('linkidata/serviceworker-template.js');
         $serviceWorkerData = $version . $serviceWorkerData;
         file_put_contents('serviceworker.js', $serviceWorkerData);
 
