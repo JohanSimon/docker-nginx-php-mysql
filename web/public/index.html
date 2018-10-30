@@ -1,0 +1,693 @@
+<!-- Cached version, created on: 2018-10-27 07:30 -->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Linki list</title>
+    <meta name="description" content="Linki is a linklist with draggable cards">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Johan">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic">
+    <link rel="stylesheet" href="styles/material-icons.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/demo-grid.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16x16.png">
+    <link rel="manifest" href="images/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">  
+  </head>
+  <body>
+
+    <section class="grid-demo">
+
+      <div class="section-title">
+        <span>
+Linki List        </span>
+        <img height="100" src="images/linki-logo.png" alt="page-logo">      
+      </div>
+
+
+      <div class="controls cf">
+
+        <div class="control search">
+          <div class="control-icon">
+            <i class="material-icons">&#xE8B6;</i>
+          </div>
+          <form method="get" action="https://www.google.com/search" target="_blank">
+            <input class="control-field form-control " type="text" name="q" placeholder="Search with google..." />
+          </form>
+        </div>
+
+        <div class="control search">
+          <div class="control-icon">
+            <i class="material-icons">&#xE8B6;</i>
+          </div>
+          <input class="control-field search-field form-control " type="text" name="search" placeholder="Search cards..." />
+        </div>
+        <div class="control filter">
+          <div class="control-icon">
+            <i class="material-icons">&#xE152;</i>
+          </div>
+          <div class="select-arrow">
+            <i class="material-icons">&#xE313;</i>
+          </div>
+          <select class="control-field filter-field form-control">
+            <option value="" selected>All</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+          </select>
+        </div>
+
+        <div class="control sort" style="display: none;">
+          <div class="control-icon">
+            <i class="material-icons">&#xE164;</i>
+          </div>
+          <div class="select-arrow">
+            <i class="material-icons">&#xE313;</i>
+          </div>
+          <select class="control-field sort-field form-control" disabled>
+            <option value="order" selected>Drag</option>
+            <option value="title">Title (drag disabled)</option>
+            <option value="color">Color (drag disabled)</option>
+          </select>
+        </div>
+
+        <div class="control layout">
+          <div class="control-icon">
+            <i class="material-icons">&#xE871;</i>
+          </div>
+          <div class="select-arrow">
+            <i class="material-icons">&#xE313;</i>
+          </div>
+          <select class="control-field layout-field form-control">
+            <option value="left-top" selected>Left Top</option>
+            <option value="left-top-fillgaps">Left Top (fill gaps)</option>
+            <option value="right-top">Right Top</option>
+            <option value="right-top-fillgaps">Right Top (fill gaps)</option>
+            <option value="left-bottom">Left Bottom</option>
+            <option value="left-bottom-fillgaps">Left Bottom (fill gaps)</option>
+            <option value="right-bottom">Right Bottom</option>
+            <option value="right-bottom-fillgaps">Right Bottom (fill gaps)</option>
+          </select>
+        </div>
+      
+      </div>
+      </div>
+
+
+    <div class="grid muuri">
+
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="1" data-color="red" data-title="SOMtoday" data-icon="important_devices" data-link="https://prakti-oop.somtoday.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://prakti-oop.somtoday.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">1</div>
+                    <div class="card-icon">
+                        <i class="material-icons">important_devices</i>
+                    </div>
+                    <div class="card-title">SOMtoday</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="2" data-color="red" data-title="Forum" data-icon="forum" data-link="https://proassenforum.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://proassenforum.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">2</div>
+                    <div class="card-icon">
+                        <i class="material-icons">forum</i>
+                    </div>
+                    <div class="card-title">Forum</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="3" data-color="green" data-title="PrO Mail" data-icon="mail" data-link="https://mail.google.com" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://mail.google.com" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">3</div>
+                    <div class="card-icon">
+                        <i class="material-icons">mail</i>
+                    </div>
+                    <div class="card-title">PrO Mail</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="4" data-color="green" data-title="PrO Agenda" data-icon="event" data-link="https://www.nu.nl" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.nu.nl" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">4</div>
+                    <div class="card-icon">
+                        <i class="material-icons">event</i>
+                    </div>
+                    <div class="card-title">PrO Agenda</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="5" data-color="green" data-title="PrO Drive" data-icon="folder_shared" data-link="https://drive.google.com" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://drive.google.com" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">5</div>
+                    <div class="card-icon">
+                        <i class="material-icons">folder_shared</i>
+                    </div>
+                    <div class="card-title">PrO Drive</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="6" data-color="green" data-title="PrO Drive Leerkrachten" data-icon="cloud_circle" data-link="https://drive.google.com/a/proassen.nl/folderview?id=0BzVQLkwdX4bqcnVqOWFXS25aU3c&usp=sharing" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://drive.google.com/a/proassen.nl/folderview?id=0BzVQLkwdX4bqcnVqOWFXS25aU3c&usp=sharing" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">6</div>
+                    <div class="card-icon">
+                        <i class="material-icons">cloud_circle</i>
+                    </div>
+                    <div class="card-title">PrO Drive Leerkrachten</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="7" data-color="blue" data-title="Thuiswerken" data-icon="home" data-link="https://#" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://#" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">7</div>
+                    <div class="card-icon">
+                        <i class="material-icons">home</i>
+                    </div>
+                    <div class="card-title">Thuiswerken</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="8" data-color="blue" data-title="PrO Website" data-icon="info_outline" data-link="https://www.pro-assen.nl" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.pro-assen.nl" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">8</div>
+                    <div class="card-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <div class="card-title">PrO Website</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="9" data-color="blue" data-title="PrO Rapport" data-icon="assessment" data-link="https://mijn.easyrapport.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://mijn.easyrapport.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">9</div>
+                    <div class="card-icon">
+                        <i class="material-icons">assessment</i>
+                    </div>
+                    <div class="card-title">PrO Rapport</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="10" data-color="blue" data-title="YouForce Self Service" data-icon="people_outline" data-link="https://login.youforce.biz/Aanmelden/Aanmeld.aspx" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://login.youforce.biz/Aanmelden/Aanmeld.aspx" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">10</div>
+                    <div class="card-icon">
+                        <i class="material-icons">people_outline</i>
+                    </div>
+                    <div class="card-title">YouForce Self Service</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="11" data-color="blue" data-title="Pro Active Facturen" data-icon="drafts" data-link="https://mijn.proactive.nl/onderwijsbureau-meppel/login" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://mijn.proactive.nl/onderwijsbureau-meppel/login" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">11</div>
+                    <div class="card-icon">
+                        <i class="material-icons">drafts</i>
+                    </div>
+                    <div class="card-title">Pro Active Facturen</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="12" data-color="blue" data-title="Tobias Financieel" data-icon="monetization_on" data-link="https://tobias.edutopics.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://tobias.edutopics.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">12</div>
+                    <div class="card-icon">
+                        <i class="material-icons">monetization_on</i>
+                    </div>
+                    <div class="card-title">Tobias Financieel</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="13" data-color="blue" data-title="22.01 Passend Onderwijs" data-icon="visibility" data-link="https://www.passendonderwijs-vo-22-01.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.passendonderwijs-vo-22-01.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">13</div>
+                    <div class="card-icon">
+                        <i class="material-icons">visibility</i>
+                    </div>
+                    <div class="card-title">22.01 Passend Onderwijs</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="14" data-color="blue" data-title="Indigo Aanmelding" data-icon="fullscreen" data-link="https://swvweb.nl/indigo/login" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://swvweb.nl/indigo/login" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">14</div>
+                    <div class="card-icon">
+                        <i class="material-icons">fullscreen</i>
+                    </div>
+                    <div class="card-title">Indigo Aanmelding</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="15" data-color="blue" data-title="Text AID Dyslexie" data-icon="record_voice_over" data-link="https://ws.readspeaker.com/a/wasp/app/8" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://ws.readspeaker.com/a/wasp/app/8" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">15</div>
+                    <div class="card-icon">
+                        <i class="material-icons">record_voice_over</i>
+                    </div>
+                    <div class="card-title">Text AID Dyslexie</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="16" data-color="blue" data-title="Docent Vragenlijst" data-icon="help" data-link="https://docs.google.com/forms/d/e/1FAIpQLSeNUMFJA0HXpQxrYLI27_dWJi1k9IuzsobwQbELc5CqqW_f_w/viewform" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNUMFJA0HXpQxrYLI27_dWJi1k9IuzsobwQbELc5CqqW_f_w/viewform" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">16</div>
+                    <div class="card-icon">
+                        <i class="material-icons">help</i>
+                    </div>
+                    <div class="card-title">Docent Vragenlijst</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="17" data-color="red" data-title="Tussengroep" data-icon="accessibility" data-link="https://tussengroep.yurls.net/nl/page/797236" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://tussengroep.yurls.net/nl/page/797236" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">17</div>
+                    <div class="card-icon">
+                        <i class="material-icons">accessibility</i>
+                    </div>
+                    <div class="card-title">Tussengroep</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="18" data-color="red" data-title="Tumult" data-icon="book" data-link="https://www.tumult.nl" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.tumult.nl" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">18</div>
+                    <div class="card-icon">
+                        <i class="material-icons">book</i>
+                    </div>
+                    <div class="card-title">Tumult</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="19" data-color="red" data-title="Nieuwsbegrip" data-icon="chrome_reader_mode" data-link="https://www.nieuwsbegrip.nl" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.nieuwsbegrip.nl" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">19</div>
+                    <div class="card-icon">
+                        <i class="material-icons">chrome_reader_mode</i>
+                    </div>
+                    <div class="card-title">Nieuwsbegrip</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="20" data-color="green" data-title="Bareka Online Rekenen" data-icon="border_inner" data-link="https://www.bareka.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.bareka.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">20</div>
+                    <div class="card-icon">
+                        <i class="material-icons">border_inner</i>
+                    </div>
+                    <div class="card-title">Bareka Online Rekenen</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="21" data-color="green" data-title="OVD Kiem" data-icon="school" data-link="https://www.ovdkiem.nl/portallogin" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.ovdkiem.nl/portallogin" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">21</div>
+                    <div class="card-icon">
+                        <i class="material-icons">school</i>
+                    </div>
+                    <div class="card-title">OVD Kiem</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="22" data-color="green" data-title="Edu Actief" data-icon="account_balance" data-link="https://www.edu-actief.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.edu-actief.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">22</div>
+                    <div class="card-icon">
+                        <i class="material-icons">account_balance</i>
+                    </div>
+                    <div class="card-title">Edu Actief</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="23" data-color="green" data-title="SLO leerplan" data-icon="group_work" data-link="https://www.slo.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.slo.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">23</div>
+                    <div class="card-icon">
+                        <i class="material-icons">group_work</i>
+                    </div>
+                    <div class="card-title">SLO leerplan</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="24" data-color="green" data-title="School TV" data-icon="tv" data-link="https://www.schooltv.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.schooltv.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">24</div>
+                    <div class="card-icon">
+                        <i class="material-icons">tv</i>
+                    </div>
+                    <div class="card-title">School TV</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="25" data-color="green" data-title="Kennisnet" data-icon="domain" data-link="https://www.kennisnet.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.kennisnet.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">25</div>
+                    <div class="card-icon">
+                        <i class="material-icons">domain</i>
+                    </div>
+                    <div class="card-title">Kennisnet</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="26" data-color="red" data-title="YouTUBE" data-icon="movie" data-link="https://youtube.nl" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://youtube.nl" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">26</div>
+                    <div class="card-icon">
+                        <i class="material-icons">movie</i>
+                    </div>
+                    <div class="card-title">YouTUBE</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="27" data-color="blue" data-title="Spons" data-icon="account_circle" data-link="https://www.spons.nl/inloggen" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.spons.nl/inloggen" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">27</div>
+                    <div class="card-icon">
+                        <i class="material-icons">account_circle</i>
+                    </div>
+                    <div class="card-title">Spons</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="28" data-color="blue" data-title="New Item" data-icon="help_outline" data-link="#" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="#" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">28</div>
+                    <div class="card-icon">
+                        <i class="material-icons">help_outline</i>
+                    </div>
+                    <div class="card-title">New Item</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="29" data-color="green" data-title="Zonnepaneel Techniek" data-icon="brightness_5" data-link="https://easyview.auroravision.net/easyview/?entityId=13707231" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://easyview.auroravision.net/easyview/?entityId=13707231" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">29</div>
+                    <div class="card-icon">
+                        <i class="material-icons">brightness_5</i>
+                    </div>
+                    <div class="card-title">Zonnepaneel Techniek</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="30" data-color="blue" data-title="Boris" data-icon="refresh" data-link="https://www.pro-assen.nl/boris/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.pro-assen.nl/boris/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">30</div>
+                    <div class="card-icon">
+                        <i class="material-icons">refresh</i>
+                    </div>
+                    <div class="card-title">Boris</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="31" data-color="blue" data-title="VCA Digitaal" data-icon="settings_input_svideo" data-link="https://lms.constructionmedia.nl/index.php?page=LMS.Users.loginUserPageLMS&theme=pras&rt=1540410512" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://lms.constructionmedia.nl/index.php?page=LMS.Users.loginUserPageLMS&theme=pras&rt=1540410512" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">31</div>
+                    <div class="card-icon">
+                        <i class="material-icons">settings_input_svideo</i>
+                    </div>
+                    <div class="card-title">VCA Digitaal</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="32" data-color="blue" data-title="Instruct" data-icon="iso" data-link="https://www.toetsit-online.nl/manager/?id=43&portal=J5EW-TMX-UT9LN" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.toetsit-online.nl/manager/?id=43&portal=J5EW-TMX-UT9LN" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">32</div>
+                    <div class="card-icon">
+                        <i class="material-icons">iso</i>
+                    </div>
+                    <div class="card-title">Instruct</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="33" data-color="red" data-title="Veilig Op Stage" data-icon="healing" data-link="https://ws.readspeaker.com/a/wasp/app/8" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://ws.readspeaker.com/a/wasp/app/8" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">33</div>
+                    <div class="card-icon">
+                        <i class="material-icons">healing</i>
+                    </div>
+                    <div class="card-title">Veilig Op Stage</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="34" data-color="green" data-title="Nedercom" data-icon="insert_comment" data-link="https://www.nedercom.nl/appl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.nedercom.nl/appl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">34</div>
+                    <div class="card-icon">
+                        <i class="material-icons">insert_comment</i>
+                    </div>
+                    <div class="card-title">Nedercom</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="35" data-color="green" data-title="Studiemeter" data-icon="straighten" data-link="https://www.studiemeter.nl/#/login/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.studiemeter.nl/#/login/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">35</div>
+                    <div class="card-icon">
+                        <i class="material-icons">straighten</i>
+                    </div>
+                    <div class="card-title">Studiemeter</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="36" data-color="red" data-title="Start werk en blijf veilig" data-icon="hearing" data-link="https://swbveilig.nl/loginSWB.asp" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://swbveilig.nl/loginSWB.asp" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">36</div>
+                    <div class="card-icon">
+                        <i class="material-icons">hearing</i>
+                    </div>
+                    <div class="card-title">Start werk en blijf veilig</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 blue muuri-item muuri-item-shown" data-id="37" data-color="blue" data-title="PrO Portfolio" data-icon="photo_album" data-link="https://proassen.cvsmensenwerk.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://proassen.cvsmensenwerk.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">37</div>
+                    <div class="card-icon">
+                        <i class="material-icons">photo_album</i>
+                    </div>
+                    <div class="card-title">PrO Portfolio</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 red muuri-item muuri-item-shown" data-id="38" data-color="red" data-title="StruX" data-icon="style" data-link="https://auth.edu-actief.nl/module.php/saml/disco.php?entityID=https%3A%2F%2Fauth.edu-actief.nl%2Fmodule.php%2Fsaml%2Fsp%2Fmetadata.php%2Fsp&return=https%3A%2F%2Fauth.edu-actief.nl%2Fmodule.php%2Fsaml%2Fsp%2Fdiscoresp.php%3FAuthID%3D_1df60d939766eecdc4d704707ee45f3e8ed656b380%253Ahttps%253A%252F%252Fauth.edu-actief.nl%252Fsaml2%252Fidp%252FSSOService.php%253Fspentityid%253Dhttp%25253A%25252F%25252Fbronnenbak.strux.nl%25252Fsaml%25252Fmodule.php%25252Fsaml%25252Fsp%25252Fmetadata.php%25252Fsp%2526cookieTime%253D1540411583%2526RelayState%253Dhttp%25253A%25252F%25252Fbronnenbak.strux.nl%25252Flogin_check&returnIDParam=idpentityid&IDPList[]=https%3A%2F%2Fauth-edu.edu-actief.nl%2Fsaml2%2Fidp%2Fmetadata.php&IDPList[]=aselect.entree.kennisnet.nl&" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://auth.edu-actief.nl/module.php/saml/disco.php?entityID=https%3A%2F%2Fauth.edu-actief.nl%2Fmodule.php%2Fsaml%2Fsp%2Fmetadata.php%2Fsp&return=https%3A%2F%2Fauth.edu-actief.nl%2Fmodule.php%2Fsaml%2Fsp%2Fdiscoresp.php%3FAuthID%3D_1df60d939766eecdc4d704707ee45f3e8ed656b380%253Ahttps%253A%252F%252Fauth.edu-actief.nl%252Fsaml2%252Fidp%252FSSOService.php%253Fspentityid%253Dhttp%25253A%25252F%25252Fbronnenbak.strux.nl%25252Fsaml%25252Fmodule.php%25252Fsaml%25252Fsp%25252Fmetadata.php%25252Fsp%2526cookieTime%253D1540411583%2526RelayState%253Dhttp%25253A%25252F%25252Fbronnenbak.strux.nl%25252Flogin_check&returnIDParam=idpentityid&IDPList[]=https%3A%2F%2Fauth-edu.edu-actief.nl%2Fsaml2%2Fidp%2Fmetadata.php&IDPList[]=aselect.entree.kennisnet.nl&" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">38</div>
+                    <div class="card-icon">
+                        <i class="material-icons">style</i>
+                    </div>
+                    <div class="card-title">StruX</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+            
+            <div class="item h20 w20 green muuri-item muuri-item-shown" data-id="39" data-color="green" data-title="Rijbewijs Theorie" data-icon="directions_car" data-link="https://www.theorieles.nl/" style="left: 0px; top: 0px; transform: translateX(0px) translateY(0px); display: block; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <a href="https://www.theorieles.nl/" target="_blank">
+            <div class="item-content" style="opacity: 1; transform: scale(1);">
+                <div class="card">
+                    <div class="card-id">39</div>
+                    <div class="card-icon">
+                        <i class="material-icons">directions_car</i>
+                    </div>
+                    <div class="card-title">Rijbewijs Theorie</div>
+                </div>
+            </div>
+            </a>
+            </div>  
+                </div>
+
+   
+    <div class="grid-footer">
+    </div>
+
+    </section>
+    
+    <footer>
+      <i class="material-icons">favorite_border</i> Powered by <a href="https://www.danton.nl" target="_blank">Danton</a> <i class="material-icons">lock_open</i> <a href="linki-admin.php" >Login</a>
+    </footer>
+
+    <script>
+      // init script for javasettings
+      var admin = false;
+      if ( navigator.serviceWorker ) {
+          navigator.serviceWorker.register('/serviceworker.js')
+          .then (function(register){
+          // console.log("Succes!", register.scope)
+        }).catch(function(error){
+          // console.log("Failure!",error)
+        });
+      }
+    </script>
+    <script src="scripts/vendor/web-animations-2.3.1.min.js"></script>
+    <script src="scripts/vendor/hammer-2.0.8.min.js"></script>
+    <script src="scripts/vendor/muuri-0.7.0.js"></script>
+    <script src="scripts/link-list.js"></script>
+
+  </body>
+
+</html>

@@ -21,7 +21,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Linki - Link list</title>
+    <title>Linki list</title>
     <meta name="description" content="Linki is a linklist with draggable cards">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Johan Antonissen">
@@ -29,6 +29,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic">
     <link rel="stylesheet" href="styles/main.css?v=5">
     <link rel="stylesheet" href="styles/demo-grid.css?v=5">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon/favicon-16x16.png">
+    <link rel="manifest" href="images/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">      
   </head>
   <body>
 
@@ -38,7 +56,7 @@
     <section class="grid-demo">
 
       <div class="section-title">
-        <span><?=$title?></span>
+        <span>[Admin: ] <?=$title?></span>
         <img height="100" src="<?=$logo?>" alt="page-logo">
       </div>
 
@@ -95,7 +113,7 @@
           </select>
         </div>
 
-<?
+<?php
     // some basic security: check for cookie
     if (!isset($_COOKIE['Linki289867438'])) {
       // if no cookie set ask for credentials (verify by ajax)
@@ -160,7 +178,7 @@ function verifyCredentials() {
 
 </script>
 
-<?
+<?php
     }
 ?>
 
@@ -248,7 +266,7 @@ function verifyCredentials() {
 
 
         <div class="grid muuri">
-<?        
+<?php        
         // load cards
         foreach ($linkiData->cards as $card) {
 ?>
@@ -271,7 +289,7 @@ function verifyCredentials() {
                 </div>
                 <!-- </a> -->
         </div>  
-<?          
+<?php          
         }
 ?>
 
@@ -286,7 +304,9 @@ function verifyCredentials() {
     </section>
     
     <footer>
-      Making linkpages fun! <i class="material-icons">favorite</i> Powered by <a href="https://www.danton.nl" target="_blank">Danton</a>
+      <i class="material-icons">favorite</i> Powered by <a href="https://www.danton.nl" target="_blank">Danton</a> 
+      <i class="material-icons">backup</i> <a href="<?=$linkiData->json_file?>" download="<?=$linkiData->json_file?>">Download backup</a>
+      <i class="material-icons">lock</i> <a href="/" >Logoff</a>
     </footer>
     
     <script>
@@ -296,7 +316,7 @@ function verifyCredentials() {
     <script src="scripts/vendor/web-animations-2.3.1.min.js"></script>
     <script src="scripts/vendor/hammer-2.0.8.min.js"></script>
     <script src="scripts/vendor/muuri-0.7.0.js"></script>
-    <script src="scripts/link-list.js?v=1"></script>
+    <script src="scripts/link-list.js"></script>
 
   </body>
 

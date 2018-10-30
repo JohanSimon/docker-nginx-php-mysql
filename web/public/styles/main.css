@@ -163,6 +163,10 @@ footer {
 footer p {
   margin: 0;
 }
+
+footer a {
+  margin-right: 10px;
+}
 footer .credits {
   color: #aaa;
   margin-bottom: 5px;
